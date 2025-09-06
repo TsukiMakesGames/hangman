@@ -1,33 +1,30 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
-string quoteToGuess = "herlo";
+using hangman;
+
+string quoteToGuess = "hello";
 char[] dashedQuote = new string('_', quoteToGuess.Length).ToCharArray();
 
-int life = 5;
+int life = 0;
+List<char> alreadyEntered = new List<char>();
+
 
 while (true)
 {
-    Console.WriteLine(new string(dashedQuote));
-    Console.WriteLine("Insert a letter: ");
+   HangmanUtils.DisplayMainFrame(alreadyEntered, life, dashedQuote);
     char letter = Console.ReadKey().KeyChar;
-    bool containsLetter = quoteToGuess.Contains(letter);
-    if (containsLetter)
+    alreadyEntered.Add(letter);
+    if (quoteToGuess.Contains(letter))
     {
-        for (int i = 0; i < quoteToGuess.Length; i++)
+        for (int i = 0; i < dashedQuote.Length; i++)
         {
             if (quoteToGuess[i] == letter)
             {
-                dashedQuote[i] = quoteToGuess[i];
+                dashedQuote[i] = letter;
             }
         }
+        Console.WriteLine(dashedQuote);
     }
-    else
-    {
-        life--;
-    }
-
-    if (life == 0)
-    {
-        break;
-    }
+    
+    
 }
