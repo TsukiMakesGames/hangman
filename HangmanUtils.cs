@@ -2,75 +2,80 @@ namespace hangman;
 
 public static class HangmanUtils
 {
-    public static void DisplayMainFrame(List<char> chars, int life, char[] dashedQuote)
+    public static void DisplayMainFrame(List<char> chars, int attempts, char[] dashedWord)
     {
-        Console.WriteLine(HANGMANPICS[life]);
+        Console.WriteLine($"Attempts: {attempts}");
+        Console.WriteLine(HANGMANPICS[attempts]);
         if (chars.Count > 0)
         {
-            Console.WriteLine($"Letters already entered {string.Join(", ", chars)}");
+            Console.WriteLine($"\nLetters already entered {string.Join(", ", chars)}\n");
         }
-        Console.WriteLine(dashedQuote);
-        Console.Write("Enter a character: ");
+
+        Console.WriteLine(dashedWord);
+        Console.WriteLine();
+
     }
 
-    static string[] HANGMANPICS =
-    [
+    public static int MAX_ATTEMPTS = 6;
+    
+    private static string[] HANGMANPICS =
+    {
         @"
-    +---+
-    |   |
-    |
-    |
-    |
-    |
+     +---+
+     |   |
+         |
+         |
+         |
+         |
     =========",
         @"
-    +---+
-    |   |
-    O   |
-    |
-    |
-    |
+     +---+
+     |   |
+     O   |
+         |
+         |
+         |
     =========",
         @"
-    +---+
-    |   |
-    O   |
-    |   |
-    |
-    |
+     +---+
+     |   |
+     O   |
+     |   |
+         |
+         |
     =========",
         @"
-    +---+
-    |   |
-    O   |
+     +---+
+     |   |
+     O   |
     /|   |
-    |
-    |
+         |
+         |
     =========",
         @"
-    +---+
-    |   |
-    O   |
+     +---+
+     |   |
+     O   |
     /|\  |
-    |
-    |
+         |
+         |
     =========",
         @"
-    +---+
-    |   |
-    O   |
+     +---+
+     |   |
+     O   |
     /|\  |
     /    |
-    |
+         |
     =========",
         @"
-    +---+
-    |   |
-    O   |
+     +---+
+     |   |
+     O   |
     /|\  |
     / \  |
-    |
+         |
     ========="
-    ];
+    };
 
-}
+};
