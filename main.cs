@@ -1,6 +1,17 @@
 ﻿using hangman;
 
-string wordToGuess = "hello";
+string wordToGuess =  "";
+try
+{
+   wordToGuess = HangmanUtils.WordPicker();
+}
+catch (FileNotFoundException)
+{
+    Console.WriteLine("⚠️ Error: Could not start the game.");
+    Console.WriteLine("Reason: The word list file 'wordlist.txt' is missing.");
+    Environment.Exit(1);
+}
+
 char[] dashedWord = new string('_', wordToGuess.Length).ToCharArray();
 
 int attempts = 0;
@@ -28,17 +39,17 @@ while (true)
     Console.Write("Enter a character: ");
     char letter = Console.ReadKey().KeyChar;
     
-    if (char.IsLetter(letter))
+    if (!char.IsLetter(letter))
     {
         Console.WriteLine("\nYou entered an invalid character!\nTry again.");
-        Thread.Sleep(2400);
+        Thread.Sleep(2000);
         continue;
     } 
     
     if (alreadyEntered.Contains(letter))
     {
         Console.WriteLine("\n\nYou already typed this character");
-        Thread.Sleep(2400);
+        Thread.Sleep(2000);
         continue;
     }
     alreadyEntered.Add(letter);

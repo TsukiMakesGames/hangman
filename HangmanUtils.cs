@@ -1,5 +1,7 @@
 namespace hangman;
 
+using System.IO;
+
 public static class HangmanUtils
 {
     public static void DisplayMainFrame(List<char> chars, int attempts, char[] dashedWord)
@@ -14,6 +16,18 @@ public static class HangmanUtils
         Console.WriteLine(dashedWord);
         Console.WriteLine();
 
+    }
+
+    public static string WordPicker()
+    {
+        string path = "wordlist.txt";
+        
+        string[] lines = File.ReadAllLines(path);
+        var rand = new Random();
+        string word = lines[rand.Next(lines.Length)].Trim();
+        Console.WriteLine(word);
+        
+        return word;
     }
 
     public static int MAX_ATTEMPTS = 6;
