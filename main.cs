@@ -23,7 +23,7 @@ while (true)
     Console.Clear();
     HangmanUtils.DisplayMainFrame(alreadyEntered, attempts, dashedWord);
     
-    if (attempts == HangmanUtils.MAX_ATTEMPTS)
+    if (attempts == HangmanUtils.MaxAttempts)
     {
         Console.WriteLine("You lose!");
         break;

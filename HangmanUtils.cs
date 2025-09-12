@@ -7,7 +7,7 @@ public static class HangmanUtils
     public static void DisplayMainFrame(List<char> chars, int attempts, char[] dashedWord)
     {
         Console.WriteLine($"Attempts: {attempts}");
-        Console.WriteLine(HANGMANPICS[attempts]);
+        Console.WriteLine(HangmanPics[attempts]);
         if (chars.Count > 0)
         {
             Console.WriteLine($"\nLetters already entered {string.Join(", ", chars)}\n");
@@ -30,66 +30,73 @@ public static class HangmanUtils
         return word;
     }
 
-    public static int MAX_ATTEMPTS = 6;
+    public const int MaxAttempts = 6;
     
-    private static string[] HANGMANPICS =
-    {
-        @"
-     +---+
-     |   |
-         |
-         |
-         |
-         |
-    =========",
-        @"
-     +---+
-     |   |
-     O   |
-         |
-         |
-         |
-    =========",
-        @"
+    private static readonly string[] HangmanPics =
+    { 
+        """
+      +---+
+      |   |
+      |
+      |
+      |
+      |
+      =========
+      """,
+        """
      +---+
      |   |
      O   |
+         |
+         |
+         |
+    =========
+    """,
+        """
+     +---+
+     |   |
+     O   |
      |   |
          |
          |
-    =========",
-        @"
+    =========
+    """,
+        """
      +---+
      |   |
      O   |
     /|   |
          |
          |
-    =========",
-        @"
+    =========
+    """,
+        """
      +---+
      |   |
      O   |
     /|\  |
          |
          |
-    =========",
-        @"
+    =========
+    """,
+        """
      +---+
      |   |
      O   |
     /|\  |
     /    |
          |
-    =========",
-        @"
+    =========
+    """,
+        """
      +---+
      |   |
      O   |
     /|\  |
     / \  |
          |
-    ========="
+    =========
+    """
     };
 
 };
